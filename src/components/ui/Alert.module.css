@@ -1,0 +1,278 @@
+/* Alert Component Styles */
+.alert {
+  padding: 0.875rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border: 1px solid;
+  animation: slideIn 0.3s ease-out;
+}
+
+.alertContent {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.alertIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.alertMessage {
+  flex: 1;
+  font-weight: 500;
+}
+
+.alertClose {
+  margin-left: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  color: inherit;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.alertClose:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.alertClose:active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Alert Types */
+.error {
+  background: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.error .alertIcon {
+  color: #dc2626;
+}
+
+.success {
+  background: #f0fdf4;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+.success .alertIcon {
+  color: #22c55e;
+}
+
+.warning {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #fed7aa;
+}
+
+.warning .alertIcon {
+  color: #f59e0b;
+}
+
+.info {
+  background: #eff6ff;
+  color: #1e40af;
+  border-color: #bfdbfe;
+}
+
+.info .alertIcon {
+  color: #3b82f6;
+}
+
+/* Alert Sizes */
+.small {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.medium {
+  padding: 0.875rem 1rem;
+  font-size: 0.875rem;
+}
+
+.large {
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+}
+
+/* Alert with action button */
+.alertWithAction {
+  padding: 1rem 1.25rem;
+}
+
+.alertAction {
+  margin-left: 12px;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+.alertAction:hover {
+  background: currentColor;
+  color: white;
+}
+
+/* Dismissible alert */
+.dismissible {
+  position: relative;
+  padding-right: 3rem;
+}
+
+.dismissible .alertClose {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  margin: 0;
+}
+
+/* Alert with title */
+.alertWithTitle {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.alertTitle {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.alertDescription {
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Loading alert */
+.loading {
+  background: #f8fafc;
+  color: #475569;
+  border-color: #e2e8f0;
+}
+
+.loading .alertIcon {
+  animation: spin 1s linear infinite;
+}
+
+/* Alert animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.alertDismissing {
+  animation: slideOut 0.3s ease-in forwards;
+}
+
+/* Alert with progress bar */
+.alertWithProgress {
+  position: relative;
+  overflow: hidden;
+}
+
+.alertProgress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.3;
+  animation: progressBar 5s linear forwards;
+}
+
+@keyframes progressBar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .alert {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  .alertIcon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .alertClose {
+    padding: 2px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .error {
+    background: #1f1415;
+    color: #fca5a5;
+    border-color: #7f1d1d;
+  }
+  
+  .success {
+    background: #0f1b0f;
+    color: #86efac;
+    border-color: #14532d;
+  }
+  
+  .warning {
+    background: #1f1b0f;
+    color: #fbbf24;
+    border-color: #78350f;
+  }
+  
+  .info {
+    background: #0f1419;
+    color: #93c5fd;
+    border-color: #1e3a8a;
+  }
+}

@@ -1,0 +1,270 @@
+/* Toast Component Styles */
+.toast {
+  position: fixed;
+  z-index: 9999;
+  max-width: 400px;
+  min-width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Positions */
+.top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.top-center {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom-center {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Animation states */
+.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.visible.top-center,
+.visible.bottom-center {
+  transform: translateX(-50%);
+}
+
+.leaving {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.leaving.top-center,
+.leaving.bottom-center {
+  transform: translateX(-50%) translateY(-20px);
+}
+
+/* Content */
+.content {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 12px;
+}
+
+.iconContainer {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.textContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+  line-height: 1.25;
+}
+
+.message {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.closeButton {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.closeIcon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Toast Types */
+.success {
+  border-left: 4px solid #10b981;
+}
+
+.success .iconContainer {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.error {
+  border-left: 4px solid #ef4444;
+}
+
+.error .iconContainer {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.warning .iconContainer {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.info {
+  border-left: 4px solid #3b82f6;
+}
+
+.info .iconContainer {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+/* Progress Bar */
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #f97316, #ea580c);
+  transform: translateX(-100%);
+  animation: progress linear forwards;
+}
+
+/* Progress animation */
+@keyframes progress {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Hover effects */
+.toast:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.toast:hover.top-center,
+.toast:hover.bottom-center {
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .toast {
+    max-width: calc(100vw - 40px);
+    min-width: 280px;
+  }
+  
+  .top-right,
+  .top-left,
+  .bottom-right,
+  .bottom-left {
+    right: 20px;
+    left: 20px;
+    transform: translateX(0);
+  }
+  
+  .top-center,
+  .bottom-center {
+    left: 20px;
+    right: 20px;
+    transform: translateX(0);
+  }
+  
+  .visible.top-center,
+  .visible.bottom-center {
+    transform: translateX(0);
+  }
+  
+  .leaving.top-center,
+  .leaving.bottom-center {
+    transform: translateY(-20px);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .toast {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .title {
+    color: #f9fafb;
+  }
+  
+  .message {
+    color: #d1d5db;
+  }
+  
+  .closeButton:hover {
+    background: #374151;
+    color: #d1d5db;
+  }
+}
